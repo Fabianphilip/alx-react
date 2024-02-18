@@ -1,12 +1,14 @@
 :root {
-  --principal-color: #e14852;
-}
-
-.body-login {
-  margin: 50px 0 350px 60px;
-  flex-grow: 1;
-}
-
-.body-login input {
-  margin: 0 20px 0 10px;
-}
+    --color-white: #fff;
+    --color-hb: #e1354b;
+  }
+  
+  .App-body {
+    background-color: var(--color-white);
+    padding: 4rem;
+  }
+  
+  .App-body input {
+    margin-right: 9px;
+    margin-left: 9px;
+  }
