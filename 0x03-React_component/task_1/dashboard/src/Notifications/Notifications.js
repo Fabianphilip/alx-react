@@ -1,49 +1,35 @@
-import React from "react";
-import "./Notifications.css";
-import NotificationItem from "./NotificationItem";
-import { getLatestNotification } from "../utils/utils";
-import closeButton from "../assets/close-icon.png";
-import PropTypes from "prop-types";
-import NotificationItemShape from "./NotificationItemShape";
+import React from 'react';
+import './Notifications.css';
+import close_icon from '../assets/close-icon.png';
+import { getLatestNotification } from '../utils/utils';
 
-export default function Notifications({ displayDrawer, listNotifications }) {
+const Notifications = () => {
+  const btnStyle = {
+    position: 'fixed',
+    top: '1em',
+    right: '1em',
+    background: 'transparent',
+    border: 'none',
+  };
+
+  const imgStyle = {
+    width: '20px',
+    height: '20px',
+  }
+
   return (
-    <>
-      <div className="menuItem">Your notifications</div>
-
-      { displayDrawer ? 
-        (<div className="Notifications">
-          <button
-            style={{
-              right: 45,
-              border: "none",
-              position: "absolute",
-              background: "transparent",
-            }}
-            aria-label="close"
-            onClick={() => console.log("Close button has been clicked")}
-          >
-            <img src={closeButton} alt="close button icon" />
-          </button>
-          <p>Here is the list of notifications</p>
-          <ul>
-
-            {listNotifications.length === 0 ? (<NotificationItem value='No new notification for now' type='no-new' />) : <></>}
-            {listNotifications.map((not) => (<NotificationItem key={not.id} type={not.type} value={not.value} html={not.html} />))}
-          </ul>
-        </div>) 
-        : <></>
-      }
-    </>
-  );
+    <div className="Notifications">
+      <p>Here is the list of notifications</p>
+      <ul>
+        <li data-priority='default'>New course available</li>
+        <li data-priority='urgent'>New resume available</li>
+        <li data-priority='urgent' dangerouslySetInnerHTML={{__html: getLatestNotification()}}></li>
+      </ul>
+      <button style={btnStyle} aria-label='Close' onClick={() => console.log('Close button has been clicked')}>
+        <img src={close_icon} style={imgStyle}/>
+      </button>
+    </div>
+  )
 }
 
-Notifications.defaultProps = {
-  displayDrawer: false,
-  listNotifications: []
-};
-
-Notifications.propTypes = {
-  displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.arrayOf(NotificationItemShape)
-};
+export default Notifications;
