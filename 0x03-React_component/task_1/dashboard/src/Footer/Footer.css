@@ -1,11 +1,14 @@
 :root {
-  --principal-color: #e14852;
-}
-
-.App-footer {
-  display: flex;
-  justify-content: center;
-  border-top: 4px solid var(--principal-color);
-  font-style: italic;
-  bottom: 0;
-}
+    --color-white: #fff;
+    --color-hb: #e1354b;
+  }
+  
+  .App-footer {
+    background-color: var(--color-white);
+    text-align: center;
+    width: 100%;
+    bottom: 0px;
+    border-top: 3px solid var(--color-hb);
+    font-style: italic;
+    padding: 1rem 0;
+  }
